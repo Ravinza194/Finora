@@ -10,7 +10,6 @@ api/index.py     -> REST API (Vercel Python Serverless Function)
 src/             -> Frontend React (App.jsx, styles.css)
 vercel.json      -> Rewrite /api/* ke Flask
 requirements.txt -> Dependensi Python
-.python-version  -> Python 3.12 untuk build dan runtime Vercel
 ```
 
 ## Jalankan lokal
@@ -28,10 +27,9 @@ Lokal memakai SQLite (`finora.db`), tanpa konfigurasi tambahan.
 
 ## Deploy ke Vercel
 1. Push project ke GitHub, lalu **Add New → Project** di Vercel dan import repo-nya (framework Vite terdeteksi otomatis).
-2. Project mengunci Python 3.12 melalui `.python-version` agar cocok dengan versi `psycopg2-binary` di `requirements.txt`. Pertahankan file ini agar Vercel tidak memilih Python 3.14.
-3. Filesystem Vercel bersifat sementara, jadi siapkan database Postgres gratis (Vercel Storage → Neon, atau neon.tech).
-4. Di **Settings → Environment Variables** tambahkan `DATABASE_URL` berisi connection string Postgres. Tabel dibuat otomatis.
-5. Klik **Deploy**. Atau via CLI: `npm i -g vercel && vercel --prod`.
+2. Filesystem Vercel bersifat sementara, jadi siapkan database Postgres gratis (Vercel Storage → Neon, atau neon.tech).
+3. Di **Settings → Environment Variables** tambahkan `DATABASE_URL` berisi connection string Postgres. Tabel dibuat otomatis.
+4. Klik **Deploy**. Atau via CLI: `npm i -g vercel && vercel --prod`.
 
 ## Catatan
 Versi ini belum memiliki login, jadi semua pengunjung berbagi data yang sama. Untuk penggunaan publik, tambahkan autentikasi terlebih dulu.
